@@ -3,7 +3,7 @@ const { spawn, fork } = require('child_process');
 var myArgs = process.argv.slice(2);
 console.log('myArgs: ', myArgs);
 
-// expected input data format shape 2d arr = [[a,b,c],[d,e,f],[g,h,i]] x*x rows pref or x*y rows should work aswell
+// expected input data format shape 2d arr argument = [a,b,c],[d,e,f],[g,h,i] x*x rows pref or x*y rows should work aswell
 let inputDataFormat = myArgs[0]; 
 console.log(inputDataFormat)
 let rows = inputDataFormat.split(/],\s?/); 
@@ -53,14 +53,33 @@ let getNeighbouringLetterNodeEdgesFrom2dArr = (specificLetterIn2dArr, LettersArr
 }
 
 let allLetterNodesFlattendArr = rows.flat(); 
-console.log(allLetterNodesFlattendArr); 
-console.log(rows); 
+// console.log(allLetterNodesFlattendArr); 
+// console.log(rows); 
 
+
+let allLetterNodeFactsAsString = ""; 
+allLetterNodesFlattendArr.forEach((letterNode) => {
+    let nodeFactWithFullStop = "node(" + letterNode + ")" + ".\n"; 
+    allLetterNodeFactsAsString += nodeFactWithFullStop; 
+}); 
+
+console.log(allLetterNodeFactsAsString); 
 
 const allPossibleEdges = 
-    allLetterNodesFlattendArr.map((letterNode) => getNeighbouringLetterNodeEdgesFrom2dArr(letterNode, rows)).flat(); 
+    allLetterNodesFlattendArr.map(letterNode => getNeighbouringLetterNodeEdgesFrom2dArr(letterNode, rows)).flat();
+
+let allPossibleEdgesAsString = ""; 
+allPossibleEdges.forEach((edgeFact) => {
+    let edgeFactWithFullStop = edgeFact + ".\n"; 
+    allPossibleEdgesAsString += edgeFactWithFullStop; 
+});     
 // console.log(getNeighbouringLetterNodeEdgesFrom2dArr("a", rows)); 
-console.log(allPossibleEdges); 
+console.log(allPossibleEdgesAsString); 
+
+
+
+
+
 
 const nodesTestString = "on(a,1) on(b,2) on(d,3) on(c,4)"; 
 
