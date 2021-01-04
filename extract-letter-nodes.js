@@ -78,6 +78,16 @@ console.log(allPossibleEdgesAsString);
 
 
 
+function getTravelCostASPFactsArr(nOfNodes){
+    return (function generateTravelLengthAndCost(x,y,travelLength){
+        if(x==travelLength){
+            return [`travel_cost(${x},${y}).`]; 
+        }else{
+            return [`travel_cost(${x},${y}).`].concat(generateTravelLengthAndCost(x+1, x+y+1, travelLength));
+        } 
+    }(1,1,nOfNodes)); 
+}
+
 
 
 

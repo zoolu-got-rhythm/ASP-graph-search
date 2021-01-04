@@ -34,7 +34,6 @@ travel_cost(3,6).
 travel_cost(4,10).
 travel_cost(5,15).
 
-
 % generate:
 0 { on(X,T) : node(X) } 1 :- T == 1..D, distance(D).
 
