@@ -77,7 +77,7 @@ allPossibleEdges.forEach((edgeFact) => {
 console.log(allPossibleEdgesAsString); 
 
 
-
+// this function is written in a combination of old and new js syntax
 function getTravelCostASPFactsArr(nOfNodes){
     return (function generateTravelLengthAndCost(x,y,travelLength){
         if(x==travelLength){
